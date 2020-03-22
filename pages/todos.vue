@@ -13,15 +13,20 @@
 </template>
 
 <script>
+  import { db } from '@/plugins/firebase'
   import { mapMutations } from 'vuex'
 
   export default {
     computed: {
       todos () {return this.$store.state.todos.list}
     },
-    mounted () {
-      // console.log(this.$store.state.todos)
-      // console.log(process.env.FIREBASE_API_KEY)
+    async mounted () {
+      const snapshot = await db.collection('todos').get()
+      snapshot.forEach((doc) => {
+        // push処理
+        this.$store.commit('todos/set', doc.data())
+        // console.log(doc.data())
+      });
 
     },
     methods: {

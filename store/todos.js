@@ -8,6 +8,9 @@ export const state = () => ({
 })
 
 export const mutations = {
+  set (state, todo) {
+    state.list.push(todo)
+  },
   add (state, text) {
     state.list.push({
       text,
