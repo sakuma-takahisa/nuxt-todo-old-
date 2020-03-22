@@ -21,6 +21,8 @@
     },
     mounted () {
       // console.log(this.$store.state.todos)
+      // console.log(process.env.FIREBASE_API_KEY)
+
     },
     methods: {
       addTodo(e) {
